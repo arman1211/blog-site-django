@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="d-flex flex-wrap w-75 m-auto gap-5 p-5">
+  {% for post in posts %}
+  <div class="card text-bg-light mb-3" style="max-width: 18rem">
+    <div class="card-header">{{post.author}}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{post.title}}</h5>
+      <p class="card-text">{{post.content | truncatewords:20}}</p>
+      {% comment %} {% for cat in post.catagory %}
+
+      <button>{{cat}}</button>
+      {% endfor %} {% endcomment %}
+
+      <button class="btn btn-secondary">Read Post</button>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+
+{% endblock content %}
