@@ -1,0 +1,20 @@
+{% extends "base.html" %}\ {% block content %} {% load crispy_forms_tags %}
+
+<form method="POST" class="w-50 m-auto">
+  
+  
+  
+  {% for msg in messages %}
+  <h4 class='text-{{msg.tags}}'>{{msg}}</h4>
+  {% endfor %}
+  
+
+
+  <h2>Update profile</h2>
+  {% csrf_token %} {{form | crispy}}
+  <input type="submit" value="Add" class="btn btn-primary" />
+  <p>Need to change password? <a href="{% url "changepass" %}">click here</a></p>
+</form>
+
+
+{% endblock content %}

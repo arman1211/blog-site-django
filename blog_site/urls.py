@@ -21,8 +21,8 @@ from blog_site.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home, name='home'),
-    path('author', include('author.urls')),
+    path('catagory/<slug:catagory_slug>',home, name='cat_slug'),
+    path('author/', include('author.urls')),
     path('post/', include('post.urls')),
     path('catagory/', include('catagory.urls')),
-    path('profile/', include('profiles.urls')),
 ]

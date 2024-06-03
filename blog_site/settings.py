@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'author',
     'catagory',
     'post',
-    'profiles',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
@@ -57,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+LOGIN_URL = '/author/login/'
 ROOT_URLCONF = 'blog_site.urls'
 
 TEMPLATES = [

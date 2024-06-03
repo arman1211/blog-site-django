@@ -1,0 +1,126 @@
+{% extends "base.html" %}\ {% load static %} {% block content %} {% load crispy_forms_tags %} 
+
+<link rel="stylesheet" href="{% static 'profile.css' %}">
+
+
+<section class="section about-section gray-bg" id="about">
+  <div class="container">
+      <div class="row align-items-center flex-row-reverse">
+          <div class="col-lg-6">
+              <div class="about-text go-to">
+                  <h3 class="dark-color">{{request.user.first_name}} {{request.user.last_name}} <a href="{% url "editprofile" %}"> Edit profie</a></h3>
+                  <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
+                  <div class="row about-list">
+                      <div class="col-md-6">
+                          <div class="media">
+                              <label>Birthday</label>
+                              <p>4th april 1998</p>
+                          </div>
+                          <div class="media">
+                              <label>Age</label>
+                              <p>22 Yr</p>
+                          </div>
+                          <div class="media">
+                              <label>Residence</label>
+                              <p>Canada</p>
+                          </div>
+                          <div class="media">
+                              <label>Address</label>
+                              <p>California, USA</p>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="media">
+                              <label>E-mail</label>
+                              <p>{{request.user.email}}</p>
+                          </div>
+                          <div class="media">
+                              <label>Phone</label>
+                              <p>820-885-3321</p>
+                          </div>
+                          <div class="media">
+                              <label>Skype</label>
+                              <p>skype.0404</p>
+                          </div>
+                          <div class="media">
+                              <label>Freelance</label>
+                              <p>Available</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6">
+              <div class="about-avatar">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+              </div>
+          </div>
+      </div>
+      <div class="counter">
+          <div class="row">
+              <div class="col-6 col-lg-3">
+                  <div class="count-data text-center">
+                      <h6 class="count h2" data-to="500" data-speed="500">500</h6>
+                      <p class="m-0px font-w-600">Total Blog</p>
+                  </div>
+              </div>
+              <div class="col-6 col-lg-3">
+                  <div class="count-data text-center">
+                      <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                      <p class="m-0px font-w-600">Project Completed</p>
+                  </div>
+              </div>
+              <div class="col-6 col-lg-3">
+                  <div class="count-data text-center">
+                      <h6 class="count h2" data-to="850" data-speed="850">850</h6>
+                      <p class="m-0px font-w-600">Photo Capture</p>
+                  </div>
+              </div>
+              <div class="col-6 col-lg-3">
+                  <div class="count-data text-center">
+                      <h6 class="count h2" data-to="190" data-speed="190">190</h6>
+                      <p class="m-0px font-w-600">Telephonic Talk</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+
+<h4 class='text-center text-primary'>Your Posts</h4>
+<div class="d-flex flex-wrap w-75 m-auto gap-5 p-5">
+  
+  {% for post in posts %}
+  <div class="card text-bg-light mb-3" style="max-width: 18rem">
+    <div class="card-header text-primary">{{post.author}}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{post.title}}</h5>
+      <p class="card-text">{{post.content | truncatewords:20}}</p>
+      <div class="catagory d-flex gap-2">
+        <p>Cat:</p>
+        {% for cat in post.catagory.all %}
+
+        <p class="text-bg-secondary p-1 rounded">{{cat.name}}</p>
+        {% endfor %}
+      </div>
+
+      <button class="btn btn-dark btn-sm mb-2">Read Post</button>
+      <br />
+      {% if post.author == request.user %}
+      <a class="btn btn-warning" href="{% url "edit" post.id %}" >
+        Edit
+      </a>
+      <a class="btn btn-danger" href="{% url "delete" post.id %}">Delete</a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+
+
+{% endblock content %}

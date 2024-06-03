@@ -1,30 +1,46 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="d-flex flex-wrap w-75 m-auto gap-5 p-5">
-  {% for post in posts %}
-  <div class="card text-bg-light mb-3" style="max-width: 18rem">
-    <div class="card-header text-primary">{{post.author}}</div>
-    <div class="card-body">
-      <h5 class="card-title">{{post.title}}</h5>
-      <p class="card-text">{{post.content | truncatewords:20}}</p>
-      <div class="catagory d-flex gap-2">
-        <p>Cat:</p>
-        {% for cat in post.catagory.all %}
+<div class='d-flex flex-wrap p-5'>
 
-        <p class="text-bg-secondary p-1 rounded">{{cat.name}}</p>
-        {% endfor %}
+  <div class='col-2'>
+    <h4>Sort by catagory</h4>
+
+    {% for cat in catagory %}
+    <input type="radio" class="btn-check" name="options-base" id="{{cat.id}}" autocomplete="off">
+    
+      <label class="btn btn-outline-secondary m-1" for="{{cat.id}}"><a href="{% url "cat_slug" cat.slug  %}" style='text-decoration: none'>{{cat.name}}</a></label>
+    {% endfor %}
+  </div>
+  
+    <div class="d-flex flex-wrap w-75 m-auto gap-5 col-10">
+      {% for post in posts %}
+      <div class="card text-bg-light mb-3" style="max-width: 18rem">
+        <div class="card-header text-primary">{{post.author}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.content | truncatewords:20}}</p>
+          <div class="catagory d-flex gap-2">
+            <p>Cat:</p>
+            {% for cat in post.catagory.all %}
+    
+            <p class="text-bg-secondary p-1 rounded">{{cat.name}}</p>
+            {% endfor %}
+          </div>
+    
+          <button class="btn btn-dark btn-sm">Read Post</button>
+          
+        </div>
       </div>
-
-      <button class="btn btn-dark btn-sm mb-2">Read Post</button>
-      <br />
-      <a class="btn btn-warning" href="{% url "edit" post.id %}" >
-        Edit
-      </a>
-      <a class="btn btn-danger" href="{% url "delete" post.id %}">Delete</a>
+    
+      {% endfor %}
     </div>
+    
   </div>
 
-  {% endfor %}
+
 </div>
+
+
+
 
 {% endblock content %}

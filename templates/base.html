@@ -12,40 +12,36 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-secondary w-75 m-auto bg-dark">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid w-75 m-auto">
         <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url "home" %}">Home</a>
             </li>
+            {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url "author" %}">Add author</a>
+              <a class="nav-link active" aria-current="page" href="{% url "post" %}">Add blog</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url "profiles" %}">Profiles</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url "catagory" %}">Add Catagory</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="{% url "post" %}">Add Post</a>
-            </li>
+            {% endif %}
             
           </ul>
+          {% if request.user.is_authenticated %}
+          <div class="d-flex" >
+            <a class="btn btn-outline-warning mx-5" href="{% url "profile" %}">Profile</a>
+            <a class="btn btn-outline-success" href="{% url "logout" %}">Logout</a>
+          </div>
+          {% else %}
+          <div class="d-flex" >
+            <a class="btn btn-outline-warning mx-5" href="{% url "register" %}">Register</a>
+            <a class="btn btn-outline-success" href="{% url "login" %}">Login</a>
+          </div>
+          {% endif %}
+          
         </div>
       </div>
     </nav>
@@ -57,5 +53,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   </body>
 </html>
