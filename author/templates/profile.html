@@ -1,6 +1,6 @@
 {% extends "base.html" %}\ {% load static %} {% block content %} {% load crispy_forms_tags %} 
 
-<link rel="stylesheet" href="{% static 'profile.css' %}">
+<link rel="stylesheet" href="{% static 'author/profile.css' %}">
 
 
 <section class="section about-section gray-bg" id="about">
@@ -8,7 +8,7 @@
       <div class="row align-items-center flex-row-reverse">
           <div class="col-lg-6">
               <div class="about-text go-to">
-                  <h3 class="dark-color">{{request.user.first_name}} {{request.user.last_name}} <a href="{% url "editprofile" %}"> Edit profie</a></h3>
+                  <h3 class="dark-color">{{request.user.first_name}} {{request.user.last_name}} <a href="{% url "editprofile" %}"> <small>Edit profie</small></a></h3>
                   <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
                   <div class="row about-list">
                       <div class="col-md-6">

@@ -1,0 +1,57 @@
+body {
+    background-color: #d3d8de;
+}
+
+.blog-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #343a40;
+}
+
+.card-text {
+    color: #6c757d;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.card-footer {
+    background-color: #fff;
+    border-top: none;
+}
+
+.author-date {
+    display: flex;
+    flex-direction: column;
+}
+
+.author {
+    font-weight: 600;
+    color: #343a40;
+}
+
+.date {
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+.categor {
+    font-size: 0.85em;
+    text-transform: uppercase;
+}
