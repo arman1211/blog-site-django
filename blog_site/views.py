@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from post.models import Post
 from catagory.models import Catagory
+from django.views.generic import DetailView
+
 
 def home(request,catagory_slug = None):
     posts = Post.objects.all()
@@ -9,3 +11,8 @@ def home(request,catagory_slug = None):
         posts = Post.objects.filter(catagory = catagory)
     catagory = Catagory.objects.all()
     return render(request, 'home.html',{'posts': posts,'catagory': catagory})
+
+class DetailPostView(DetailView):
+    model = Post
+    template_name = 'detailpost.html'
+    

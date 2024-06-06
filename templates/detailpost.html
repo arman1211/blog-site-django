@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'author/detailview.css' %}">
+
+
+  
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+            <div class="card post-card shadow-sm">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                {% else %}
+                <img src="https://i.ibb.co/yXKgszr/bog.webp"  class="card-img-top" alt="">
+                {% endif %}
+                <div class="card-body">
+                    <h1 class="card-title">{{ post.title }}</h1>
+                    <div class="author-date mb-3">
+                        <span class="author">{{ post.author }}</span> | 
+                        <span class="date">{{ post.published_date|date:"F j, Y" }}</span>
+                    </div>
+                    <div class="post-content">
+                        {{ post.content|linebreaks }}
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <div class="cata d-flex flex-wrap gap-1">
+                        {% for cat in post.catagory.all %}
+                            <span class="badge bg-secondary">{{ cat.name }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="{% url 'home' %}" class="btn btn-primary">Back to Blog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

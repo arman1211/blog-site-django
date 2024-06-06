@@ -125,12 +125,17 @@ USE_TZ = True
 
 
 
-STATIC_URL = '/static/'
+STATIC_URL = 'author/static/'
 
 # Optionally, add the static files directory if it's not already there
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR /"author" /"static",
 ]
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / ''
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

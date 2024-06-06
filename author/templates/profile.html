@@ -88,7 +88,13 @@
 </section>
 
 
-
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 
 <h4 class='text-center text-primary'>Your Posts</h4>
@@ -102,10 +108,13 @@
       <p class="card-text">{{post.content | truncatewords:20}}</p>
       <div class="catagory d-flex gap-2">
         <p>Cat:</p>
-        {% for cat in post.catagory.all %}
+        <div class="d-flex flex-wrap gap-1">
 
-        <p class="text-bg-secondary p-1 rounded">{{cat.name}}</p>
-        {% endfor %}
+            {% for cat in post.catagory.all %}
+    
+            <p class="text-bg-secondary px-2 rounded">{{cat.name}}</p>
+            {% endfor %}
+        </div>
       </div>
 
       <button class="btn btn-dark btn-sm mb-2">Read Post</button>

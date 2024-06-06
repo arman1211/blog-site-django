@@ -1,13 +1,13 @@
-.blog-card {
+.post-card {
     transition: transform 0.3s;
 }
 
-.blog-card:hover {
-    transform: scale(1.05);
+.post-card:hover {
+    transform: scale(1.02);
 }
 
-.blog-card img {
-    height: 200px;
+.post-card img {
+    height: 300px;
     object-fit: cover;
 }
 
@@ -19,4 +19,8 @@
 .cata p {
     margin: 0;
     font-size: 0.85rem;
+}
+
+.post-content {
+    white-space: pre-line;
 }
